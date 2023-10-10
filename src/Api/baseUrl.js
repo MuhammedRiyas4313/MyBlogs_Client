@@ -1,4 +1,4 @@
 import Axios from "axios";
 export const AxiosURL = Axios.create({
-    baseURL: "http://localhost:4000/",
+    baseURL: "https://myblogs-i56i.onrender.com/",
 });
