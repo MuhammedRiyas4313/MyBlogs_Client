@@ -28,8 +28,8 @@ function Login() {
         const validate = validateLogin({ setErrMsg, username, password });
         console.log(validate,'Validation')
         if(!validate) return;
-        const response = await LoginAPI({ email: username, password: password });
         try {
+            const response = await LoginAPI({ email: username, password: password });
             if (response.status === 201) {
                 const result = response.data;
                 message.success(`welcome ${result.dispatch.name}`);
@@ -41,7 +41,8 @@ function Login() {
                 setErrorMessage(response.msg);
             }
         } catch (error) {
-            console.log(error);
+            message.error(error.response.data.response)
+            console.log(error.response.data,'error in login catch');
         }
     };
 

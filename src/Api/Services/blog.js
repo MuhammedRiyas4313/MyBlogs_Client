@@ -69,3 +69,16 @@ export const DownloadBlog = async (token) => {
         return error?.response;
     }
 };
+
+export const convertCsvToJSON = async (data,token) => {
+    try {
+        console.log(data,'file in csv')
+        const response = AxiosURL.post("/convert-csv-to-json",data,{
+            headers: { Authorization: "Bearer " + token },
+        });
+        return response;
+    } catch (error) {
+        console.log(error?.message);
+        return error?.response;
+    }
+};

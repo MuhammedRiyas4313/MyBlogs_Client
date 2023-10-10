@@ -26,8 +26,8 @@ function Register() {
         const validate = validateRegister({ setErrMsg, email, username, password })
         console.log('validation done',validate)
         if(!validate) return;
-        const response = await RegisterAPI({ email, username, password });
         try {
+            const response = await RegisterAPI({ email, username, password });
             if (response.status === 201) {
                 message.success("register success");
                 navigate("/login");
@@ -38,6 +38,7 @@ function Register() {
                 setErrorMessage(response.msg);
             }
         } catch (error) {
+            message.error(error.response.data.response);
             console.log(error);
         }
     };
